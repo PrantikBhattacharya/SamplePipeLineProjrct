@@ -1,0 +1,11 @@
+.App{
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control,.btn{
+    margin: 5px;
+}
