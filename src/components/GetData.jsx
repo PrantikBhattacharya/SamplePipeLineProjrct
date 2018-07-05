@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import avatar from '../img/img_avatar3.png'
 
 class GetData extends Component {
     constructor(props){
@@ -14,7 +15,7 @@ class GetData extends Component {
     }
 
     getData(){
-        fetch('https://0x1dp8xb35.execute-api.us-west-2.amazonaws.com/DevStage')
+        fetch('https://23qgfo667l.execute-api.us-west-2.amazonaws.com/DevStage')
         .then( resp => resp.json() )
         .then( 
             (data) => {
@@ -41,7 +42,12 @@ class GetData extends Component {
                 <div>
                     { items.map( item => {
                         return(
-                            <div key={item.id}> {item.name} {item.age} </div>
+                            // <div key={item.id}> {item.name} {item.age} </div>
+                            <div className="card" key={item.id}>
+                            <div className="card-header">EmployeeID: {item.id}</div>
+                            <div className="card-body"><img className='avatar' src={avatar} /></div>
+                            <div className='card-footer'>{item.name} is of age {item.age}.</div>
+                            </div>
                         )
                     } 
                     )}

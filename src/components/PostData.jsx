@@ -31,9 +31,11 @@ class PostData extends Component {
                 <div className='form-inline'>
                     <div className='form-group'>
                         <input className='form-control' 
+                               name='name'
                                placeholder='name'
                                onChange={event => {this.setState({name:event.target.value})}}/>
                         <input className='form-control' 
+                               name='age'
                                placeholder='age'
                                onChange={event => {this.setState({age:event.target.value})}}/>
                     </div>
@@ -41,6 +43,7 @@ class PostData extends Component {
                             onClick={ () => this.postData() }
                             >Submit</button>  
                      <button className='btn btn-success'
+                            name={ (this.state.showData) ? 'Clear' : 'Get All'  }
                             onClick={ () => this.showData() }
                             >{ (this.state.showData) ? <div>Clear</div> : <div>Get All</div>  }</button> 
                 </div>
