@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-
-
-
-import PostData from './PostData';
+import connect  from 'react-redux';
+import { getData,postData,clearAll } from '../actions';
+import PostData from '../components/PostData';
 
 class App extends Component {
    
@@ -10,7 +9,7 @@ class App extends Component {
        
         return(
             <div className='App'>
-                <h1>Hello World</h1>
+                <h1>Sample ReactJS App</h1>
                 
                 <PostData /> 
                   

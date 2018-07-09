@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect }  from 'react-redux';
+import { getData,postData,clearAll } from '../actions';
 import avatar from '../img/img_avatar3.png'
 
 class GetData extends Component {
@@ -14,21 +16,25 @@ class GetData extends Component {
         
     }
 
+    // getData(){
+    //     fetch('https://23qgfo667l.execute-api.us-west-2.amazonaws.com/DevStage')
+    //     .then( resp => resp.json() )
+    //     .then( 
+    //         (data) => {
+    //             console.log('data',data);
+    //             this.setState({isLoaded:true,items:data});
+                
+                
+    //         },
+    //         (error) => {
+    //             console.log('error',error);
+    //             this.setState({isLoaded:true,error});
+    //         }
+    //      )
+    // }
+
     getData(){
-        fetch('https://23qgfo667l.execute-api.us-west-2.amazonaws.com/DevStage')
-        .then( resp => resp.json() )
-        .then( 
-            (data) => {
-                console.log('data',data);
-                this.setState({isLoaded:true,items:data});
-                
-                
-            },
-            (error) => {
-                console.log('error',error);
-                this.setState({isLoaded:true,error});
-            }
-         )
+        this.props.getData();
     }
 
     renderData(){
@@ -77,4 +83,11 @@ class GetData extends Component {
     }
 }
 
-export default GetData;
+function mapStateToProps(state){
+    return {
+        data: state
+    }
+}
+
+
+export default connect(mapStateToProps,{getData})(GetData);
