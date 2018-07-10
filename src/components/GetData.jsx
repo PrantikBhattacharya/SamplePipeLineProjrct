@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect }  from 'react-redux';
+import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies';
 import { getData,postData,clearAll } from '../actions';
 import avatar from '../img/img_avatar3.png'
 
@@ -16,26 +17,31 @@ class GetData extends Component {
         
     }
 
-    // getData(){
-    //     fetch('https://23qgfo667l.execute-api.us-west-2.amazonaws.com/DevStage')
-    //     .then( resp => resp.json() )
-    //     .then( 
-    //         (data) => {
-    //             console.log('data',data);
-    //             this.setState({isLoaded:true,items:data});
-                
-                
-    //         },
-    //         (error) => {
-    //             console.log('error',error);
-    //             this.setState({isLoaded:true,error});
-    //         }
-    //      )
-    // }
-
     getData(){
-        this.props.getData();
+        fetch('https://23qgfo667l.execute-api.us-west-2.amazonaws.com/DevStage')
+        .then( resp => resp.json() )
+        .then( 
+            (data) => {
+                console.log('data',data);
+                this.setState({isLoaded:true,items:data});
+                bake_cookie('data',this.state);
+                
+                
+            },
+            (error) => {
+                console.log('error',error);
+                this.setState({isLoaded:true,error});
+                bake_cookie('data',this.state);
+            }
+         )
     }
+
+    // getData(){
+    //     console.log(this.props.getData());
+        
+        
+        
+    // }
 
     renderData(){
         const { error,isLoaded,items } = this.state;

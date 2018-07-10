@@ -10,6 +10,7 @@ const getData = () => {
             (data) => {
                console.log('data',data);
                 //this.setState({isLoaded:true,items:data});
+                //this.state = {isLoaded:true,items:data}
             },
             (error) => {
                 console.log('error',error);
@@ -21,12 +22,12 @@ const getData = () => {
 
 const data = (state=[],action) => {
     let data=null;
-    delete_cookie('data');
+    //delete_cookie('data');
     state = read_cookie('data');
     switch(action.type){
         case GET_DATA:
         // data = getData(action).then( res => {return res});
-        data = [...state,getData(action)];
+        data = [...state, getData(action)];
         console.log('data in reducer',data);
         bake_cookie('data',data);
         return data;
