@@ -5,6 +5,7 @@ node_js:
   - node
 script:
   - npm install
+  - npm audit fix
   - npm run build
 notifications:
   email: false
